@@ -1,5 +1,4 @@
 Problema da Reserva de Hotel Syngenta
-
 ===
 **DO NOT change the names of the function (getCheapestHotel) or of the file and folder it is in, changing it implies in disqualification.**
 
