@@ -6,7 +6,6 @@ function separeteClientsAndDates (input) {
     const listDates = dates.split(', ').map(date => new Date(date))//Split the dates and make a date object
     return [type, listDates]
 }
-
 // To add the prices based on day | Array add with reduce
 function getAllPrices (type, hotel, listDates) {
     return listDates.reduce((acc, date) => {
@@ -17,7 +16,6 @@ function getAllPrices (type, hotel, listDates) {
         }
     }, 0)
 }
-
 // Get the cheapest price
 function getPriceArray (type, listDate){
     var Highest = 1000
@@ -41,7 +39,6 @@ function getPriceArray (type, listDate){
     })
     return lowerPrice, hotel1, hotel2, hotel3
 }
-
 function getBestHotel(lowerPrice, hotel1, hotel2, hotel3){
     // get a array only with names
     getNames = []
@@ -66,9 +63,6 @@ function getBestHotel(lowerPrice, hotel1, hotel2, hotel3){
         }
     }
 }
-
-
-
 function getCheapestHotel (input) { //DO NOT change the function's name.
     const [type, listDates] = separeteClientsAndDates(input);
     getPriceArray(type, listDates);
