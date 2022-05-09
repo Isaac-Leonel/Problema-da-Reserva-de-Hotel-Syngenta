@@ -31,7 +31,7 @@ function getPriceArray (type, listDate){
                 hotel2 = priceHotel
                 break;
             case 2:
-                hotel3 = priceHotelS
+                hotel3 = priceHotel
                 break;
         }
         if(priceHotel < Highest){
