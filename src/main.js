@@ -31,12 +31,11 @@ function getPriceArray (type, listDate){
                 hotel2 = priceHotel
                 break;
             case 2:
-                hotel3 = priceHotel
+                hotel3 = priceHotelS
                 break;
         }
         if(priceHotel < Highest){
             lowerPrice = priceHotel
-            Highest = Highest - 1000
             Highest = priceHotel
         }
     })
