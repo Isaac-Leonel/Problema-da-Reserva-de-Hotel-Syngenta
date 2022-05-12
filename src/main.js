@@ -16,58 +16,40 @@ function getAllPrices (type, hotel, listDates) {
         }
     }, 0)
 }
-// Get the cheapest price
-function getPriceArray (type, listDate){
-    var Highest = 1000
-    hotelBase.forEach((hotel, i, array) =>{
+// Get the cheapest hotel
+function getCheapest (type, listDate){
+    let getHotelPrices = []
+    let getquality = []
+    hotelBase.forEach((hotel) =>{
         const priceHotel = getAllPrices(type, hotel, listDate)
-        switch(i){
-            case 0:
-                hotel1 = priceHotel
-                break;
-            case 1:
-                hotel2 = priceHotel
-                break;
-            case 2:
-                hotel3 = priceHotel
-                break;
-        }
-        if(priceHotel < Highest){
-            lowerPrice = priceHotel
-            Highest = priceHotel
+        getHotelPrices.push(priceHotel)
+    })
+    const hotelPrices = getHotelPrices
+    if((new Set(hotelPrices)).size !== hotelPrices.length){
+        hotelPrices.forEach((price, i) => {
+            if(price == Math.min(...hotelPrices)){
+                hotelBase.forEach((hotel, n, array) =>{
+                    getquality.push(array[i].quality)
+                })
+            }
+        })
+        hotelBase.map((hotel, i, array) =>{
+            if(Math.max(...getquality) === hotel.quality){
+                getBestHotel = array[i].name
+            }
+        })
+    }else getHotelPrices.forEach((price, i) =>{
+        if(price == Math.min(...getHotelPrices)){
+            hotelBase.forEach((hotel, n, array) =>{
+                getBestHotel = array[i].name
+            })
         }
     })
-    return lowerPrice, hotel1, hotel2, hotel3
-}
-function getBestHotel(lowerPrice, hotel1, hotel2, hotel3){
-    // get a array only with names
-    getNames = []
-    hotelBase.forEach((hotel, i, array) =>{
-        getNames += array[i].name +  ","
-    })
-    // Split Array
-    const hotelNames = getNames.split(',')
-    // Checks equality of values ​​to return the hotel with higher quality
-    if(hotel1 === hotel2){ return hotelNames[1] }
-    if(hotel2 === hotel3){ return hotelNames[2] }
-    if(hotel3 === hotel1){ return hotelNames[2] }
-    else {
-        if(lowerPrice === hotel1){
-                return hotelNames[0]
-        }
-        if(lowerPrice === hotel2){
-                return hotelNames[1]
-        }
-        if(lowerPrice === hotel3){
-                return hotelNames[2]
-        }
-    }
+    return getBestHotel
 }
 function getCheapestHotel (input) { //DO NOT change the function's name.
     const [type, listDates] = separeteClientsAndDates(input);
-    getPriceArray(type, listDates);
-    const bestHotel = getBestHotel(lowerPrice, hotel1, hotel2, hotel3)
-    return bestHotel;
+    return getCheapest(type, listDates);
 }
 
 exports.getCheapestHotel = getCheapestHotel
