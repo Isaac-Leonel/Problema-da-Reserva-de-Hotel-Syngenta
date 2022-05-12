@@ -41,4 +41,16 @@ describe('unit test | changing for this year', function () {
   });
 })
 
+describe('unit test | with more dates', function () {
+  it('should return Lakewood', function () {
+    expect(getCheapestHotel("Regular: 07May2022(sat), 08May2022(sun), 09May2022(mon), 10May2022(tues)")).to.equal("Lakewood");
+  });
+  it('should return Ridgewood', function () {
+    expect(getCheapestHotel("Rewards: 20Mar2009(fri), 21Mar2009(sat), 22Mar2009(sun), 23Mar2009(mon), 22Mar2009(tues)")).to.equal("Ridgewood");
+  });
+  it('should return Lakewood', function () {
+    expect(getCheapestHotel("Regular: 17May2022(tues), 18May2022(wed), 19May2022(thur), 20May2022(fri), 21May2022(sat), 22May2022(sun)")).to.equal("Lakewood");
+  });
+})
+
 
